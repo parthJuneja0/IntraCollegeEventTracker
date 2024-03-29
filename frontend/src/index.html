@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <h1 class="text-[40px] absolute right-[38%]">Intra College Event Tracker</h1>
+    <div id="btns" class="float-right m-6">
+        <a id="signup_btn" class="bg-blue-600 cursor-pointer text-white p-4" href="auth.html">Sign Up</a>
+    </div>
+
+
+    <!-- Metamask -->
+    <script type="module">
+
+        import { isMetaMaskConnected } from './metamask_init.js'
+        import { db } from './firebase_init.js'
+        import { getDoc, doc, updateDoc } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js'
+
+
+        // Wrapping all code in async function
+        (async function () {
+
+            // Fetching user account from MetaMask
+            let userAddress = null;
+            await isMetaMaskConnected()
+                .then((account) => {
+                    userAddress = account;
+                })
+
+            // Showing user account specific content on website 
+            if (userAddress) {
+
+                // Fetching cid from firestore
+                let cid = null;
+                const documentRef = doc(db, "cid_storage", "authCid");
+
+                await getDoc(documentRef)
+                    .then((docSnapshot) => {
+                        cid = docSnapshot.data().cid;
+                    })
+                    .catch(err => {
+                        console.log(err.message)
+                    })
+
+
+                // Fetching existing authData
+                const res = await fetch(
+                    `https://brown-biological-pheasant-126.mypinata.cloud/ipfs/${cid}`
+                );
+                let authData = await res.json();
+
+                if (authData.communities[userAddress]) {
+                    const btn = document.getElementById('signup_btn');
+                    btn.innerHTML = 'My Events';
+                    btn.href = 'community_events.html';
+                }
+                else if (authData.users[userAddress]) {
+                    const btn = document.getElementById('signup_btn');
+                    btn.innerHTML = 'Join an event';
+                    btn.href = 'user_events.html';
+                }
+                else {
+                    console.log('Account not found')
+                }
+            }
+        })();
+
+    </script>
+</body>
+
+</html>

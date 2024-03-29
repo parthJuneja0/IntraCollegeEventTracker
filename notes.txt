@@ -1,0 +1,19 @@
+truffle compile 
+truffle migrate 
+truffle migrate --network sepolia
+
+
+// Connecting web3 to ganache blockchain
+// const web3 = new Web3("http://127.0.0.1:7545")
+
+// Connecting web3 to metamask
+// export const web3 = new Web3(window.ethereum)
+
+// If i create web3 instance by passing rpc url of ganache - then transactions will not take place by metmask, transaction will be completed automatically
+// It is only beneficial to check the functionality of smart contracts (working or not)
+// If we require making a dapp which users can use, then we must create web3 instance by passing window.ethereum to use metamask
+
+// Else if i pass window.ethereum then transaction will take place by metamask.
+// 1. If i deploy contract on ganache - then i need to connect metamask with ganache (Imported accounts)
+// 2. If i deploy on testnet (sepolia) - then i need to connect metamask with sepolia.
+
