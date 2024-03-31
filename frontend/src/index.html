@@ -6,14 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Bricolage+Grotesque&family=Mukta:wght@500&family=Nunito:ital@1&family=Oswald:wght@200..700&family=PT+Serif:ital@1&family=REM:wght@100&display=swap"
+        rel="stylesheet">
 </head>
 
-<body>
-    <h1 class="text-[40px] absolute right-[38%]">Intra College Event Tracker</h1>
-    <div id="btns" class="float-right m-6">
-        <a id="signup_btn" class="bg-blue-600 cursor-pointer text-white p-4" href="auth.html">Sign Up</a>
-    </div>
+<body class="bg-black text-white"
+    style="font-family: Oswald; font-optical-sizing: auto; font-weight: 400; font-style: normal;">
 
+    <img src="logo.png" alt="" class="absolute left-5 w-[125px]">
+
+    <!-- <p><a href="https://giphy.com/gifs/douglasschatz-trippy-smoke-rave-xTiTniuHdUjpOlNo1q">via GIPHY</a></p> -->
+
+    <div style="background-color: rgb(12 12 12)"
+        class="flex justify-center items-center  h-[75px]  w-[100vw] py-[50px] border-b-2">
+        <h1 class="text-[30px] " style="background-color: rgb(12 12 12);">INTRA COLLEGE EVENT TRACKER</h1>
+
+        <div id="btns" class=" absolute top-1 right-1 m-6">
+            <a id="signup_btn" class="bg-blue-600 cursor-pointer text-white p-2" href="auth.html">Sign Up</a>
+        </div>
+    </div>
+    <nav style="background-color: rgb(12 12 12)" class=" py-2 border-b w-[100vw] flex justify-center">
+        <ul class="flex space-x-10">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="community_events.html">Community Events</a></li>
+            <li><a href="user_events.html">User Events</a></li>
+            <li><a href="user_events.html">Calender</a></li>
+        </ul>
+    </nav>
+
+    <div>
+        <div style="background-color: rgb(12 12 12)"
+            class="flex text-[50px] justify-center items-center absolute rounded-lg top-[350px] right-[880px] w-[350px] h-[300px] ">
+            NEXUS
+        </div>
+        <img src="IMG-20240331-WA0011.jpg" alt=""
+            class="h-[420px] rounded-lg absolute w-[500px] top-[250px] right-[370px]">
+    </div>
 
     <!-- Metamask -->
     <script type="module">
@@ -62,7 +91,7 @@
                 }
                 else if (authData.users[userAddress]) {
                     const btn = document.getElementById('signup_btn');
-                    btn.innerHTML = 'Join an event';
+                    btn.innerHTML = 'JOIN AN EVENT';
                     btn.href = 'user_events.html';
                 }
                 else {

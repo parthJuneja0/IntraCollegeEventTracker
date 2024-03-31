@@ -54,7 +54,6 @@ const communityEventsContract = new web3.eth.Contract(communityEvents_contractAB
             <p><strong>Date:</strong> ${response[i].description}</p>
             <p><strong>Location:</strong> ${response[i].date}</p>
             <p><strong>Description:</strong> ${response[i].location}</p> `;
-
                 document.getElementById('eventsContainer').appendChild(eventDetailsDiv);
             }
         })
